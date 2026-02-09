@@ -15,5 +15,5 @@ A lightweight, zero-dependency utility library for smart text manipulation in Ty
 ## 🚀 Installation
 
 ```bash
-npm install echo-kit
+npm install echokyt
 ```
