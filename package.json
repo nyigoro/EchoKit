@@ -1,6 +1,6 @@
 {
   "name": "echokyt",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A lightweight text utility library",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/index.js",
