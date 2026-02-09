@@ -4,14 +4,14 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "isolatedModules": true,
-    "declaration": true,           // Generates the .d.ts files (types)
+    "declaration": true, // Generates the .d.ts files (types)
     "outDir": "./dist",
-    "rootDir": "./src",            // Tell TSC to only care about src for building
+    "rootDir": "./src", // Tell TSC to only care about src for building
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],         // ONLY build what's in src
+  "include": ["src/**/*"], // ONLY build what's in src
   "exclude": ["node_modules", "tests/**/*.test.ts"] // Ignore tests during build
 }

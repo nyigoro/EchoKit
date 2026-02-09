@@ -12,4 +12,14 @@ describe('smartTruncate', () => {
     const result = smartTruncate(text, 50);
     expect(result).toBe('Short text');
   });
+
+  it('should return the same text if length equals limit', () => {
+    const text = 'Exact length';
+    expect(smartTruncate(text, text.length)).toBe(text);
+  });
+
+  it('should truncate a long single word', () => {
+    const text = 'Supercalifragilistic';
+    expect(smartTruncate(text, 5)).toBe('Super...');
+  });
 });

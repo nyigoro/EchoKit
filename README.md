@@ -6,11 +6,14 @@ A lightweight, zero-dependency utility library for smart text manipulation in Ty
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## ✨ Features
+
 - **Smart Truncate**: Cuts text at word boundaries, not mid-word.
 - **Reading Time**: Quick estimation for blog posts.
 - **Zero Dependencies**: Keep your bundle size tiny.
 - **TypeScript Ready**: Full type definitions included.
 
 ## 🚀 Installation
+
 ```bash
 npm install echo-kit
+```
