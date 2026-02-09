@@ -1,2 +1,10 @@
 node_modules
 dist
+coverage
+src/**/*.js
+src/**/*.d.ts
+src/**/*.map
+tests/**/*.js
+tests/**/*.d.ts
+tests/**/*.map
+*.tsbuildinfo
