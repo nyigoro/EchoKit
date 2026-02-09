@@ -4,7 +4,7 @@ export type HashtagToken = {
   raw: string;
 };
 
-const HASHTAG_REGEX = /(^|[^\w])#([\p{L}\p{M}0-9_]{1,64})/gu;
+const HASHTAG_REGEX = /(^|[^\p{L}\p{M}0-9_])#([\p{L}\p{M}0-9_]{1,64})/gu;
 
 /**
  * Extracts #hashtags from text.

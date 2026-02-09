@@ -11,6 +11,11 @@
       "import": "./dist/index.js",
       "require": "./dist/cjs/index.cjs"
     },
+    "./echokyt": {
+      "types": "./dist/echokyt.d.ts",
+      "import": "./dist/echokyt.js",
+      "require": "./dist/cjs/echokyt.cjs"
+    },
     "./format": {
       "types": "./dist/format/index.d.ts",
       "import": "./dist/format/index.js",
@@ -41,10 +46,23 @@
       "import": "./dist/parse/*.js",
       "require": "./dist/cjs/parse/*.cjs"
     },
+    "./sanitize": {
+      "types": "./dist/sanitize/index.d.ts",
+      "import": "./dist/sanitize/index.js",
+      "require": "./dist/cjs/sanitize/index.cjs"
+    },
+    "./sanitize/*": {
+      "types": "./dist/sanitize/*.d.ts",
+      "import": "./dist/sanitize/*.js",
+      "require": "./dist/cjs/sanitize/*.cjs"
+    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
+      "echokyt": [
+        "dist/echokyt.d.ts"
+      ],
       "format": [
         "dist/format/index.d.ts"
       ],
@@ -62,6 +80,12 @@
       ],
       "parse/*": [
         "dist/parse/*.d.ts"
+      ],
+      "sanitize": [
+        "dist/sanitize/index.d.ts"
+      ],
+      "sanitize/*": [
+        "dist/sanitize/*.d.ts"
       ],
       "*": [
         "dist/*"

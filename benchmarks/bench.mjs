@@ -1,5 +1,16 @@
 import { performance } from 'node:perf_hooks';
-import { slugify, smartTruncate, readingTime, extractMentions, extractHashtags } from '../dist/index.js';
+import {
+  extractHashtags,
+  extractMentions,
+  getKeywordDensity,
+  getReadingEase,
+  normalizeQuotes,
+  readingTime,
+  removeScriptsOrStyles,
+  slugify,
+  smartTruncate,
+  stripHtml,
+} from '../dist/index.js';
 
 const run = (name, iterations, fn) => {
   const start = performance.now();
@@ -14,6 +25,8 @@ const run = (name, iterations, fn) => {
 
 const sampleText =
   'Hello world! This is a sample string with @mentions and #hashtags. '.repeat(50);
+const sampleHtml =
+  '<p>Hello <strong>world</strong> <script>alert(1)</script> #hashtags</p>'.repeat(50);
 
 run('slugify', 5000, () => {
   slugify(sampleText);
@@ -27,10 +40,52 @@ run('readingTime', 5000, () => {
   readingTime(sampleText);
 });
 
+run('getReadingEase', 2000, () => {
+  getReadingEase(sampleText);
+});
+
 run('extractMentions', 5000, () => {
   extractMentions(sampleText);
 });
 
 run('extractHashtags', 5000, () => {
   extractHashtags(sampleText);
+});
+
+run('getKeywordDensity', 2000, () => {
+  getKeywordDensity(sampleText);
+});
+
+run('stripHtml', 5000, () => {
+  stripHtml(sampleHtml);
+});
+
+run('removeScriptsOrStyles', 5000, () => {
+  removeScriptsOrStyles(sampleHtml);
+});
+
+run('normalizeQuotes', 5000, () => {
+  normalizeQuotes('“Hello” ‘world’'.repeat(50));
+});
+
+const runOnce = (name, fn) => {
+  const start = performance.now();
+  fn();
+  const end = performance.now();
+  console.log(`${name}: ${(end - start).toFixed(2)}ms`);
+};
+
+const stressText = 'word '.repeat(10000);
+const stressHtml = `<div>${stressText}</div><script>${stressText}</script>`;
+
+runOnce('stress: slugify (10k words)', () => {
+  slugify(stressText);
+});
+
+runOnce('stress: stripHtml (10k words)', () => {
+  stripHtml(stressHtml);
+});
+
+runOnce('stress: getKeywordDensity (10k words)', () => {
+  getKeywordDensity(stressText);
 });

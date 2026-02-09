@@ -4,7 +4,7 @@ export type MentionToken = {
   raw: string;
 };
 
-const MENTION_REGEX = /(^|[^\w])@([\p{L}\p{M}0-9_]{1,32})/gu;
+const MENTION_REGEX = /(^|[^\p{L}\p{M}0-9_])@([\p{L}\p{M}0-9_]{1,32})/gu;
 
 /**
  * Extracts @mentions from text.
