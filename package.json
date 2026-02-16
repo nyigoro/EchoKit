@@ -105,7 +105,9 @@
     "bench": "npm run build && node benchmarks/bench.mjs",
     "release": "standard-version",
     "test": "jest",
-    "prepublishOnly": "npm run test && npm run build"
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "preversion": "npm run lint && npm run test",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -115,6 +117,14 @@
     "text",
     "string",
     "utilities",
+    "text-manipulation",
+    "sanitization",
+    "parsing",
+    "mentions",
+    "hashtags",
+    "readability",
+    "llm",
+    "prompt-hygiene",
     "slugify",
     "truncate",
     "reading-time",

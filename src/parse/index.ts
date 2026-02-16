@@ -1,6 +1,5 @@
 import { extractMentions } from './mentions.js';
 import { extractHashtags } from './hashtags.js';
-import { getKeywordDensity } from './keywordDensity.js';
 
 export { extractMentions } from './mentions.js';
 export type { MentionToken } from './mentions.js';
