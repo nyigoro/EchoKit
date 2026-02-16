@@ -4,3 +4,5 @@ export { stripPromptPatterns, DEFAULT_PROMPT_PATTERNS } from './stripPromptPatte
 export { stripHtml } from './stripHtml.js';
 export { removeScriptsOrStyles } from './removeScriptsOrStyles.js';
 export { normalizeQuotes } from './normalizeQuotes.js';
+export { detectPII, redactPII } from './pii.js';
+export type { PiiDetectionOptions, PiiMatch, PiiRedactionOptions, PiiType } from './pii.js';

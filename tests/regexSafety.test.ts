@@ -1,6 +1,8 @@
 import {
+  extractEmails,
   extractHashtags,
   extractMentions,
+  extractUrls,
   removeScriptsOrStyles,
   stripHtml,
 } from '../src/index';
@@ -19,6 +21,18 @@ describe('regex safety and long-input behavior', () => {
 
     expect(hashtags.length).toBeGreaterThan(0);
     expect(hashtags[hashtags.length - 1]?.value).toBe('release');
+  });
+
+  it('extractEmails handles long input without catastrophic behavior', () => {
+    const longText = `${'noise '.repeat(3000)} alpha@example.com ${'x'.repeat(5000)}`;
+    const emails = extractEmails(longText);
+    expect(emails.map((item) => item.value)).toEqual(['alpha@example.com']);
+  });
+
+  it('extractUrls handles long input and trims punctuation', () => {
+    const longText = `${'text '.repeat(3000)} https://example.com/path?a=1!!!`;
+    const urls = extractUrls(longText);
+    expect(urls.map((item) => item.value)).toEqual(['https://example.com/path?a=1']);
   });
 
   it('stripHtml handles malformed or unclosed tags safely', () => {

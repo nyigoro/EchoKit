@@ -1,4 +1,10 @@
-import { extractHashtags, extractMentions, parseMentionsAndHashtags } from '../src/index';
+import {
+  extractEmails,
+  extractHashtags,
+  extractMentions,
+  extractUrls,
+  parseTextEntities,
+} from '../src/index';
 
 describe('parse utilities', () => {
   it('extracts mentions and ignores emails', () => {
@@ -16,9 +22,17 @@ describe('parse utilities', () => {
   });
 
   it('parses both mentions and hashtags together', () => {
-    const text = 'Hi @devs, ship #release';
-    const parsed = parseMentionsAndHashtags(text);
+    const text = 'Hi @devs, ship #release at https://example.com and mail team@example.com';
+    const parsed = parseTextEntities(text);
     expect(parsed.mentions.map((m) => m.value)).toEqual(['devs']);
     expect(parsed.hashtags.map((h) => h.value)).toEqual(['release']);
+    expect(parsed.urls.map((u) => u.value)).toEqual(['https://example.com']);
+    expect(parsed.emails.map((e) => e.value)).toEqual(['team@example.com']);
+  });
+
+  it('extracts emails and urls as standalone utilities', () => {
+    const text = 'Contact: support@example.com or visit www.example.com.';
+    expect(extractEmails(text).map((item) => item.value)).toEqual(['support@example.com']);
+    expect(extractUrls(text).map((item) => item.value)).toEqual(['www.example.com']);
   });
 });
